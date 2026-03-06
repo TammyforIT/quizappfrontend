@@ -1,42 +1,75 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* BACKGROUND GRADIENT */
+body {
+  background: linear-gradient(135deg, #ffdd33, #ff9f1c, #ff6a00);
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Smooth animated gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ROOT */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+*links
+a {
+  color: #fff7d6;
+  text-decoration: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffdd33, #ff6a00);
+  color: white;
+  font-weight: 600;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
-.card {
-  padding: 2em;
+/* INPUTS */
+input, select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.18);
+  color: white;
+  width: 100%;
+  margin-top: 6px;
+  backdrop-filter: blur(6px);
 }
 
-.read-the-docs {
-  color: #888;
+input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+input:focus {
+  border-color: #fff7d6;
+  outline: none;
 }
