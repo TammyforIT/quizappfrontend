@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-import PfpPage from "./pages/pfppage";   
+import PfpPage from "./pages/Pfppage";   
 
 function App() {
   return (
