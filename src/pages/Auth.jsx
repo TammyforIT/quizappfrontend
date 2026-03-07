@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
 
-  // susestates logs when cmpone
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,24 +11,27 @@ export default function Auth() {
 
   const navigate = useNavigate();
 
-  // LOGI
+  const API = import.meta.env.VITE_API_URL; 
+  //  https://quizappbackend-zfxr.onrender.com
+
+  // LOGIN
   async function handleLogin() {
     const form = new FormData();
     form.append("email", email);
     form.append("password", password);
 
-    const res = await fetch("http://localhost:5000/api/auth/login", {
+    const res = await fetch(`${API}/api/auth/login`, {
       method: "POST",
       body: form
     });
 
     const data = await res.json();
-    console.log(data);
+    console.log("LOGIN RESPONSE:", data);
 
     if (res.ok) {
       navigate("/dashboard");
     } else {
-      alert("Invalid login");
+      alert(data.message || "Invalid login");
     }
   }
 
@@ -45,17 +47,19 @@ export default function Auth() {
     form.append("email", email);
     form.append("password", password);
 
-    const res = await fetch("http://localhost:5000/api/auth/register", {
+    const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
       body: form
     });
 
     const data = await res.json();
-    console.log(data);
+    console.log("REGISTER RESPONSE:", data);
 
     if (res.ok) {
       alert("Registered!");
-      setShowLogin(true); // switch to login screen
+      setShowLogin(true);
+    } else {
+      alert(data.message || "Registration failed");
     }
   }
 
