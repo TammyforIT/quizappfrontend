@@ -14,7 +14,7 @@ export default function PfpPage() {
   // LOAD USER INFO
   useEffect(() => {
     async function loadUser() {
-      const res = await fetch(`${API}/api/user/me?id=${savedUser._id}`);
+      const res = await fetch(`${API}/api/users/me`);
       const data = await res.json();
 
       setUsername(data.username);
@@ -28,27 +28,32 @@ export default function PfpPage() {
   // UPDATE USER
   async function handleUpdate() {
     const form = new FormData();
-    form.append("id", savedUser._id);
     form.append("username", username);
     form.append("email", email);
     form.append("bio", bio);
 
-    const res = await fetch(`${API}/api/user/update`, {
+    const res = await fetch(`${API}/api/users/update`, {
       method: "PUT",
       body: form
     });
 
-    if (res.ok) {
-      alert("Profile updated!");
-      navigate("/dashboard");
-    } else {
-      alert("Update failed");
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "Update failed");
+      return;
     }
+
+    // ⭐ Save updated user to localStorage
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    // ⭐ Navigate back to dashboard
+    navigate("/dashboard");
   }
 
   // DELETE USER
   async function handleDelete() {
-    const res = await fetch(`${API}/api/user/delete?id=${savedUser._id}`, {
+    const res = await fetch(`${API}/api/users/me`, {
       method: "DELETE"
     });
 
