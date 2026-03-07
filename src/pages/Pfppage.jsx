@@ -3,48 +3,62 @@ import { useNavigate } from "react-router-dom";
 
 export default function PfpPage() {
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
+
+  const savedUser = JSON.parse(localStorage.getItem("user"));
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
 
-  // 
+  // LOAD USER INFO
   useEffect(() => {
     async function loadUser() {
-      const res = await fetch("http://localhost:5000/api/users/me");
+      const res = await fetch(`${API}/api/user/me?id=${savedUser._id}`);
       const data = await res.json();
 
       setUsername(data.username);
       setEmail(data.email);
-      setBio(data.bio);
+      setBio(data.bio || "");
     }
 
     loadUser();
   }, []);
 
-  // UPDATE USER INFO
+  // UPDATE USER
   async function handleUpdate() {
     const form = new FormData();
+    form.append("id", savedUser._id);
     form.append("username", username);
     form.append("email", email);
     form.append("bio", bio);
 
-    await fetch("http://localhost:5000/api/users/update", {
+    const res = await fetch(`${API}/api/user/update`, {
       method: "PUT",
       body: form
     });
 
-    alert("Profile updated!");
+    if (res.ok) {
+      alert("Profile updated!");
+      navigate("/dashboard");
+    } else {
+      alert("Update failed");
+    }
   }
 
   // DELETE USER
   async function handleDelete() {
-    await fetch("http://localhost:5000/api/users/me", {
+    const res = await fetch(`${API}/api/user/delete?id=${savedUser._id}`, {
       method: "DELETE"
     });
 
-    alert("Account deleted");
-    navigate("/auth");
+    if (res.ok) {
+      localStorage.removeItem("user");
+      alert("Account deleted");
+      navigate("/auth");
+    } else {
+      alert("Delete failed");
+    }
   }
 
   return (
@@ -82,7 +96,9 @@ export default function PfpPage() {
 
       <br /><br />
 
-      <button onClick={handleDelete}>Delete Account</button>
+      <button onClick={handleDelete} style={{ color: "red" }}>
+        Delete Account
+      </button>
 
       <br /><br />
 
@@ -90,5 +106,3 @@ export default function PfpPage() {
     </div>
   );
 }
-
-//handles are event handlers. onclick is react. you click and activate handlers.

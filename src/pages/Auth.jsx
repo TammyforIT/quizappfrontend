@@ -10,9 +10,10 @@ export default function Auth() {
   const [confirm, setConfirm] = useState("");
 
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
-  const API = import.meta.env.VITE_API_URL; 
-  //  https://quizappbackend-zfxr.onrender.com
+  // Check if user is already logged in
+  const savedUser = JSON.parse(localStorage.getItem("user"));
 
   // LOGIN
   async function handleLogin() {
@@ -29,6 +30,10 @@ export default function Auth() {
     console.log("LOGIN RESPONSE:", data);
 
     if (res.ok) {
+      // Save user
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Redirect
       navigate("/dashboard");
     } else {
       alert(data.message || "Invalid login");
@@ -56,69 +61,95 @@ export default function Auth() {
     console.log("REGISTER RESPONSE:", data);
 
     if (res.ok) {
-      alert("Registered!");
-      setShowLogin(true);
+      // Save user
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Redirect
+      navigate("/dashboard");
     } else {
       alert(data.message || "Registration failed");
     }
   }
 
+  // LOGOUT
+  function handleLogout() {
+    localStorage.removeItem("user");
+    navigate("/auth");
+  }
+
   return (
     <div>
-      <h2>{showLogin ? "Login" : "Register"}</h2>
-
-      {showLogin ? (
+      {/* If logged in, show Account Settings */}
+      {savedUser ? (
         <div>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <h2>Account Settings</h2>
 
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <button onClick={() => navigate("/pfp")}>
+            Go to Profile Page
+          </button>
 
-          <button onClick={handleLogin}>Login</button>
-
-          <p onClick={() => setShowLogin(false)}>
-            Don't have an account? Register
-          </p>
+          <button onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       ) : (
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
+        <>
+          <h2>{showLogin ? "Login" : "Register"}</h2>
 
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          {showLogin ? (
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            onChange={(e) => setConfirm(e.target.value)}
-          />
+              <button onClick={handleLogin}>Login</button>
 
-          <button onClick={handleRegister}>Register</button>
+              <p onClick={() => setShowLogin(false)}>
+                Don't have an account? Register
+              </p>
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+              />
 
-          <p onClick={() => setShowLogin(true)}>
-            Already have an account? Login
-          </p>
-        </div>
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                onChange={(e) => setConfirm(e.target.value)}
+              />
+
+              <button onClick={handleRegister}>Register</button>
+
+              <p onClick={() => setShowLogin(true)}>
+                Already have an account? Login
+              </p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
