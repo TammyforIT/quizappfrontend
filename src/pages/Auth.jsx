@@ -12,31 +12,29 @@ export default function Auth() {
   const navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL;
 
-  // Check if user is already logged in
   const savedUser = JSON.parse(localStorage.getItem("user"));
 
   // LOGIN
   async function handleLogin() {
-    const form = new FormData();
-    form.append("email", email);
-    form.append("password", password);
-
     const res = await fetch(`${API}/api/auth/login`, {
       method: "POST",
-      body: form
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
     });
 
     const data = await res.json();
     console.log("LOGIN RESPONSE:", data);
 
     if (res.ok) {
-      // Save user
       localStorage.setItem("user", JSON.stringify(data.user));
-
-      // Redirect
       navigate("/dashboard");
     } else {
-      alert(data.message || "Invalid login");
+      alert(data.error || "Invalid login");
     }
   }
 
@@ -47,27 +45,26 @@ export default function Auth() {
       return;
     }
 
-    const form = new FormData();
-    form.append("username", username);
-    form.append("email", email);
-    form.append("password", password);
-
     const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
-      body: form
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password
+      })
     });
 
     const data = await res.json();
     console.log("REGISTER RESPONSE:", data);
 
     if (res.ok) {
-      // Save user
       localStorage.setItem("user", JSON.stringify(data.user));
-
-      // Redirect
       navigate("/dashboard");
     } else {
-      alert(data.message || "Registration failed");
+      alert(data.error || "Registration failed");
     }
   }
 
@@ -79,7 +76,6 @@ export default function Auth() {
 
   return (
     <div>
-      {/* If logged in, show Account Settings */}
       {savedUser ? (
         <div>
           <h2>Account Settings</h2>
