@@ -10,11 +10,11 @@ export default function PfpPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
-
+//lets see
   // LOAD USER INFO
   useEffect(() => {
     async function loadUser() {
-      const res = await fetch(`${API}/api/users/me`);
+      const res = await fetch(`${API}/api/user/me?id=${savedUser._id}`);
       const data = await res.json();
 
       setUsername(data.username);
@@ -28,11 +28,12 @@ export default function PfpPage() {
   // UPDATE USER
   async function handleUpdate() {
     const form = new FormData();
+    form.append("id", savedUser._id);
     form.append("username", username);
     form.append("email", email);
     form.append("bio", bio);
 
-    const res = await fetch(`${API}/api/users/update`, {
+    const res = await fetch(`${API}/api/user/update`, {
       method: "PUT",
       body: form
     });
@@ -53,7 +54,7 @@ export default function PfpPage() {
 
   // DELETE USER
   async function handleDelete() {
-    const res = await fetch(`${API}/api/users/me`, {
+    const res = await fetch(`${API}/api/user/delete?id=${savedUser._id}`, {
       method: "DELETE"
     });
 
