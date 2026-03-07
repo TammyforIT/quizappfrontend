@@ -10,7 +10,7 @@ export default function PfpPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
-//lets see
+
   // LOAD USER INFO
   useEffect(() => {
     async function loadUser() {
@@ -27,15 +27,17 @@ export default function PfpPage() {
 
   // UPDATE USER
   async function handleUpdate() {
-    const form = new FormData();
-    form.append("id", savedUser._id);
-    form.append("username", username);
-    form.append("email", email);
-    form.append("bio", bio);
-
     const res = await fetch(`${API}/api/user/update`, {
       method: "PUT",
-      body: form
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: savedUser._id,
+        username,
+        email,
+        bio
+      })
     });
 
     const data = await res.json();
@@ -45,10 +47,10 @@ export default function PfpPage() {
       return;
     }
 
-    // ⭐ Save updated user to localStorage
+    // Save updated user to localStorage
     localStorage.setItem("user", JSON.stringify(data.user));
 
-    // ⭐ Navigate back to dashboard
+    // Redirect to dashboard
     navigate("/dashboard");
   }
 
