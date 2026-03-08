@@ -1,75 +1,45 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-/* BACKGROUND GRADIENT */
-body {
-  background: linear-gradient(135deg, #ffdd33, #ff9f1c, #ff6a00);
-  background-size: 200% 200%;
-  animation: gradientShift 12s ease infinite;
-  color: #fff;
-  min-height: 100vh;
-}
-
-/* Smooth animated gradient */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ROOT */
-#root {
-  min-height: 100vh;
+/* DASHBOARD WRAPPER */
+.dashboard-wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
 }
 
-*links
-a {
-  color: #fff7d6;
-  text-decoration: none;
-}
-
-
-button {
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(135deg, #ffdd33, #ff6a00);
-  color: white;
-  font-weight: 600;
-  transition: 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-}
-
-/* INPUTS */
-input, select {
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.18);
-  color: white;
+/* GLASS CARD */
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  padding: 40px 50px;
+  border-radius: 24px;
+  max-width: 600px;
   width: 100%;
-  margin-top: 6px;
-  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.25);
 }
 
-input::placeholder {
-  color: rgba(255,255,255,0.7);
+/* WELCOME HEADER */
+.dash-welcome {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-input:focus {
-  border-color: #fff7d6;
-  outline: none;
+.dash-welcome span {
+  color: #dbeafe;
+  text-shadow: 0 0 12px rgba(219,234,254,0.6);
+}
+
+/* SUBTEXT */
+.dash-subtext {
+  opacity: 0.85;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* BUTTON AREA */
+.dash-actions {
+  display: flex;
+  gap: 12px;
 }
