@@ -17,13 +17,15 @@ export default function Dashboard() {
   if (!user) return null;
 
   return (
-    <div className="dash-wrapper">
-      <div className="dash-card">
-        <h1 className="dash-title">Welcome back, {user.username}</h1>
+    <div className="dashboard-bg">
+      <div className="dash-wrapper">
+        <div className="dash-card">
+          <h1 className="dash-title">Welcome back, {user.username}</h1>
 
-        <div className="dash-info">
-          <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Bio:</strong> {user.bio || "No bio yet"}</p>
+          <div className="dash-info">
+            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Bio:</strong> {user.bio || "No bio yet"}</p>
+          </div>
         </div>
       </div>
     </div>
