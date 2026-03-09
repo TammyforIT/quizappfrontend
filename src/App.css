@@ -1,45 +1,85 @@
-/* DASHBOARD WRAPPER */
-.dashboard-wrapper {
+
+.page-wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 40px;
 }
 
-/* GLASS CARD */
-.dashboard-card {
+/* GLASS PANEL (used for dashboard + profile page) */
+.glass-panel {
   background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
   padding: 40px 50px;
   border-radius: 24px;
-  max-width: 600px;
   width: 100%;
+  max-width: 650px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.25);
+  color: white;
 }
 
-/* WELCOME HEADER */
-.dash-welcome {
+/* HEADERS */
+.page-title {
   font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-.dash-welcome span {
+.page-title span {
   color: #dbeafe;
   text-shadow: 0 0 12px rgba(219,234,254,0.6);
 }
 
 /* SUBTEXT */
-.dash-subtext {
+.page-subtext {
   opacity: 0.85;
   margin-bottom: 30px;
   font-size: 1.1rem;
+  text-align: center;
 }
 
-/* BUTTON AREA */
-.dash-actions {
+/* BUTTON GROUPS */
+.button-row {
   display: flex;
   gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* PROFILE PAGE INPUTS */
+.profile-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  backdrop-filter: blur(6px);
+}
+
+.profile-input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* PROFILE CARD */
+.profile-card {
+  background: rgba(255,255,255,0.18);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  background: #ff4d4d !important;
+}
+
+.delete-btn:hover {
+  background: #d93636 !important;
 }
