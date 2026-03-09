@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Auth.css"; // ⭐
 
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
@@ -22,7 +23,7 @@ export default function Auth() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          identifier, // ⭐ user can type username OR email
+          identifier, // username or email
           password
         })
       });
@@ -82,9 +83,9 @@ export default function Auth() {
   }
 
   return (
-    <div>
+    <div className="auth-container">
       {savedUser ? (
-        <div>
+        <div className="auth-box">
           <h2>Account Settings</h2>
 
           <button onClick={() => navigate("/pfp")}>
@@ -96,11 +97,11 @@ export default function Auth() {
           </button>
         </div>
       ) : (
-        <>
+        <div className="auth-box">
           <h2>{showLogin ? "Login" : "Register"}</h2>
 
           {showLogin ? (
-            <div>
+            <>
               <input
                 id="identifier"
                 name="identifier"
@@ -119,12 +120,12 @@ export default function Auth() {
 
               <button onClick={handleLogin}>Login</button>
 
-              <p onClick={() => setShowLogin(false)}>
+              <p className="switch" onClick={() => setShowLogin(false)}>
                 Don't have an account? Register
               </p>
-            </div>
+            </>
           ) : (
-            <div>
+            <>
               <input
                 id="username"
                 name="username"
@@ -159,12 +160,12 @@ export default function Auth() {
 
               <button onClick={handleRegister}>Register</button>
 
-              <p onClick={() => setShowLogin(true)}>
+              <p className="switch" onClick={() => setShowLogin(true)}>
                 Already have an account? Login
               </p>
-            </div>
+            </>
           )}
-        </>
+        </div>
       )}
     </div>
   );

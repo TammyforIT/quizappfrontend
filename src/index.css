@@ -109,3 +109,45 @@ input:focus {
   color: #dbeafe;
   font-weight: 600;
 }
+.auth-container {
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  height: 100vh;             /
+}
+
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.auth-box input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.auth-box button {
+  padding: 10px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.auth-box button:hover {
+  background: #005fcc;
+}
+
+.switch {
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+}

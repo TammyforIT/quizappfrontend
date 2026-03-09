@@ -26,8 +26,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="dashboard-wrapper">
-      <div className="dashboard-card">
+    <div className="dashboard-container">
+      <div className="dashboard-box">
         <h1 className="dash-welcome">
           Welcome, <span>{username}</span>
         </h1>
