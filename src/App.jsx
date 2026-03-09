@@ -6,16 +6,15 @@ import PfpPage from "./pages/Pfppage";
 import "./App.css";
 import ProfileToggle from "./components/ProfileToggle";
 
-
-
 function App() {
-  // Read user from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <BrowserRouter>
-      <Routes>
+      {}
+      <ProfileToggle />
 
+      <Routes>
         {/* Home */}
         <Route
           path="/"
@@ -38,7 +37,6 @@ function App() {
 
         {/* Catch-all */}
         <Route path="*" element={<NotFound />} />
-
       </Routes>
     </BrowserRouter>
   );
