@@ -16,6 +16,7 @@ export default function Auth() {
 
   const savedUser = JSON.parse(localStorage.getItem("user"));
 
+  // LOGIN
   async function handleLogin() {
     try {
       const res = await fetch(`${API}/api/auth/login`, {
@@ -31,6 +32,7 @@ export default function Auth() {
       console.log("LOGIN RESPONSE:", data);
 
       if (res.ok) {
+        // Save full user object returned by backend
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
       } else {
@@ -42,6 +44,7 @@ export default function Auth() {
     }
   }
 
+  // REGISTER
   async function handleRegister() {
     if (password !== confirm) {
       alert("Passwords do not match");
@@ -63,6 +66,7 @@ export default function Auth() {
       console.log("REGISTER RESPONSE:", data);
 
       if (res.ok) {
+        // Save full user object returned by backend
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
       } else {
@@ -74,6 +78,7 @@ export default function Auth() {
     }
   }
 
+  // LOGOUT
   function handleLogout() {
     localStorage.removeItem("user");
     navigate("/auth");

@@ -8,13 +8,11 @@ export default function Dashboard() {
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
 
-    // If no user, redirect to login
     if (!savedUser) {
       navigate("/auth");
       return;
     }
 
-    // Set username from saved user
     setUsername(savedUser.username);
   }, []);
 
