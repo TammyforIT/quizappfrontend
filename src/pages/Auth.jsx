@@ -32,7 +32,6 @@ export default function Auth() {
       console.log("LOGIN RESPONSE:", data);
 
       if (res.ok) {
-        // Save full user object returned by backend
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
       } else {
@@ -66,7 +65,6 @@ export default function Auth() {
       console.log("REGISTER RESPONSE:", data);
 
       if (res.ok) {
-        // Save full user object returned by backend
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
       } else {
@@ -78,7 +76,6 @@ export default function Auth() {
     }
   }
 
-  // LOGOUT
   function handleLogout() {
     localStorage.removeItem("user");
     navigate("/auth");
@@ -105,8 +102,6 @@ export default function Auth() {
           {showLogin ? (
             <>
               <input
-                id="identifier"
-                name="identifier"
                 type="text"
                 placeholder="Username or Email"
                 value={identifier}
@@ -114,8 +109,6 @@ export default function Auth() {
               />
 
               <input
-                id="password"
-                name="password"
                 type="password"
                 placeholder="Password"
                 value={password}
@@ -131,8 +124,6 @@ export default function Auth() {
           ) : (
             <>
               <input
-                id="username"
-                name="username"
                 type="text"
                 placeholder="Username"
                 value={username}
@@ -140,8 +131,6 @@ export default function Auth() {
               />
 
               <input
-                id="email"
-                name="email"
                 type="email"
                 placeholder="Email"
                 value={email}
@@ -149,8 +138,6 @@ export default function Auth() {
               />
 
               <input
-                id="password"
-                name="password"
                 type="password"
                 placeholder="Password"
                 value={password}
@@ -158,8 +145,6 @@ export default function Auth() {
               />
 
               <input
-                id="confirm"
-                name="confirm"
                 type="password"
                 placeholder="Confirm Password"
                 value={confirm}

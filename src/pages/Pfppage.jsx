@@ -13,6 +13,11 @@ export default function PfpPage() {
 
   // LOAD USER INFO
   useEffect(() => {
+    if (!savedUser) {
+      navigate("/auth");
+      return;
+    }
+
     async function loadUser() {
       const res = await fetch(`${API}/api/user/me?id=${savedUser._id}`);
       const data = await res.json();
@@ -50,7 +55,6 @@ export default function PfpPage() {
     // Save updated user to localStorage
     localStorage.setItem("user", JSON.stringify(data.user));
 
-    // Redirect to dashboard
     navigate("/dashboard");
   }
 
