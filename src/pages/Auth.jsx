@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css"; // ⭐
+import "../index.css"; 
 
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
