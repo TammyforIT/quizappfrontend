@@ -3,35 +3,27 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
-
     if (!savedUser) {
       navigate("/auth");
       return;
     }
-
-    setUsername(savedUser.username);
+    setUser(savedUser);
   }, []);
 
-  function handleLogout() {
-    localStorage.removeItem("user");
-    navigate("/auth");
-  }
+  if (!user) return null;
 
   return (
-    <div className="page-wrapper">
-      <div className="glass-panel">
-        <h1 className="page-title">
-          Welcome, <span>{username}</span>
-        </h1>
+    <div className="dash-wrapper">
+      <div className="dash-card">
+        <h1 className="dash-title">Welcome back, {user.username}</h1>
 
-        <p className="page-subtext">Glad to have you back.</p>
-
-        <div className="button-row">
-          <button onClick={handleLogout}>Logout</button>
+        <div className="dash-info">
+          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Bio:</strong> {user.bio || "No bio yet"}</p>
         </div>
       </div>
     </div>
