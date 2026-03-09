@@ -34,9 +34,7 @@ export default function PfpPage() {
   async function handleUpdate() {
     const res = await fetch(`${API}/api/user/update`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: savedUser._id,
         username,
@@ -52,9 +50,7 @@ export default function PfpPage() {
       return;
     }
 
-    // Save updated user to localStorage
     localStorage.setItem("user", JSON.stringify(data.user));
-
     navigate("/dashboard");
   }
 
@@ -74,47 +70,52 @@ export default function PfpPage() {
   }
 
   return (
-    <div>
-      <h2>Edit Profile</h2>
+    <div className="page-wrapper">
+      <div className="glass-panel">
 
-      <div
-        style={{
-          width: "200px",
-          height: "200px",
-          background: "#eee",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          padding: "10px",
-          marginBottom: "20px"
-        }}
-      >
-        <p><strong>Username:</strong> {username || "—"}</p>
-        <p><strong>Email:</strong> {email || "—"}</p>
-        <p><strong>Bio:</strong> {bio || "—"}</p>
+        <h1 className="page-title">
+          Edit <span>Profile</span>
+        </h1>
+
+        <p className="page-subtext">Update your account details below.</p>
+
+        <div className="profile-card">
+          <p><strong>Username:</strong> {username || "—"}</p>
+          <p><strong>Email:</strong> {email || "—"}</p>
+          <p><strong>Bio:</strong> {bio || "—"}</p>
+        </div>
+
+        <input
+          className="profile-input"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+
+        <input
+          className="profile-input"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+
+        <input
+          className="profile-input"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          placeholder="Bio"
+        />
+
+        <div className="button-row">
+          <button onClick={handleUpdate}>Save Changes</button>
+          <button className="delete-btn" onClick={handleDelete}>Delete</button>
+        </div>
+
+        <div className="button-row">
+          <button onClick={() => navigate("/dashboard")}>Back</button>
+        </div>
+
       </div>
-
-      <p>Username:</p>
-      <input value={username} onChange={(e) => setUsername(e.target.value)} />
-
-      <p>Email:</p>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-
-      <p>Bio:</p>
-      <input value={bio} onChange={(e) => setBio(e.target.value)} />
-
-      <br /><br />
-
-      <button onClick={handleUpdate}>Save Changes</button>
-
-      <br /><br />
-
-      <button onClick={handleDelete} style={{ color: "red" }}>
-        Delete Account
-      </button>
-
-      <br /><br />
-
-      <button onClick={() => navigate("/dashboard")}>Back</button>
     </div>
   );
 }
