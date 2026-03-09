@@ -22,15 +22,15 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-box">
-        <h1 className="dash-welcome">
+    <div className="page-wrapper">
+      <div className="glass-panel">
+        <h1 className="page-title">
           Welcome, <span>{username}</span>
         </h1>
 
-        <p className="dash-subtext">Glad to have you back.</p>
+        <p className="page-subtext">Glad to have you back.</p>
 
-        <div className="dash-actions">
+        <div className="button-row">
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>

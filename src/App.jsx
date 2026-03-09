@@ -3,6 +3,8 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import PfpPage from "./pages/Pfppage";
+import "./App.css";
+
 
 function App() {
   // Read user from localStorage
