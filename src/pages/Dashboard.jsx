@@ -6,22 +6,20 @@ export default function Dashboard() {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const storedUsername = localStorage.getItem("username");
+    const savedUser = JSON.parse(localStorage.getItem("user"));
 
-    // If no token, user is not logged in
-    if (!token) {
+    // If no user, redirect to login
+    if (!savedUser) {
       navigate("/auth");
       return;
     }
 
-    // Set username from localStorage
-    setUsername(storedUsername);
+    // Set username from saved user
+    setUsername(savedUser.username);
   }, []);
 
   function handleLogout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    localStorage.removeItem("user");
     navigate("/auth");
   }
 
