@@ -15,27 +15,10 @@ function App() {
       <ProfileToggle />
 
       <Routes>
-        {/* Home */}
-        <Route
-          path="/"
-          element={user ? <Dashboard /> : <Auth />}
-        />
-
-        {/* Auth page */}
+        <Route path="/" element={user ? <Dashboard /> : <Auth />} />
         <Route path="/auth" element={<Auth />} />
-
-        {/* Protected routes */}
-        <Route
-          path="/dashboard"
-          element={user ? <Dashboard /> : <Navigate to="/auth" />}
-        />
-
-        <Route
-          path="/pfp"
-          element={user ? <PfpPage /> : <Navigate to="/auth" />}
-        />
-
-        {/* Catch-all */}
+        <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/auth" />} />
+        <Route path="/pfp" element={user ? <PfpPage /> : <Navigate to="/auth" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
