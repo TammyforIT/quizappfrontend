@@ -15,7 +15,6 @@ body {
   min-height: 100vh;
 }
 
-/* Smooth animated gradient */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -34,13 +33,13 @@ a {
   text-decoration: none;
 }
 
-/* BUTTONS — FIXED */
+/* BUTTONS */
 button {
   padding: 10px 16px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  background: #ffffff22; /* translucent white */
+  background: #ffffff22;
   color: white;
   font-weight: 600;
   transition: 0.25s ease;
@@ -49,12 +48,12 @@ button {
 }
 
 button:hover {
-  background: #ffffff55; /* lighter */
+  background: #ffffff55;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.35);
 }
 
-/* INPUTS */
+/* GLOBAL INPUT STYLE */
 input, select {
   padding: 12px;
   border-radius: 8px;
@@ -75,47 +74,15 @@ input:focus {
   outline: none;
 }
 
-/* DASHBOARD PANEL (not rainbow) */
-.dashboard-container {
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
-  padding: 24px;
-  border-radius: 16px;
-  max-width: 900px;
-  margin: 40px auto;
-}
-
-/* PFP PAGE (grey background) */
-.pfp-page {
-  background: #1f1f1f;
-  min-height: 100vh;
-  padding: 40px;
-  color: white;
-}
-/* 404 PAGE */
-.notfound-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 40px;
-}
-
-.notfound-page a {
-  margin-top: 20px;
-  color: #dbeafe;
-  font-weight: 600;
-}
+/* AUTH CONTAINER */
 .auth-container {
   display: flex;
-  justify-content: center;   
-  align-items: center;       
-  height: 100vh;             
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+/* AUTH BOX */
 .auth-box {
   display: flex;
   flex-direction: column;
@@ -125,14 +92,31 @@ input:focus {
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
 }
 
+/* AUTH INPUTS — FIXED */
 .auth-box input {
+  width: 100%;
   padding: 10px;
+  margin-top: 6px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  background: #f5f5f5;
+  color: black;
+  display: block;
+  position: relative;
+  z-index: 2;
 }
 
+/* CONFIRM PASSWORD — GREY */
+#confirm {
+  background: #e0e0e0;   /* grey */
+  color: black;
+}
+
+/* AUTH BUTTONS */
 .auth-box button {
   padding: 10px;
   border: none;

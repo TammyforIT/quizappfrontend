@@ -5,7 +5,7 @@ import "../index.css";
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
 
-  const [identifier, setIdentifier] = useState(""); // username OR email
+  const [identifier, setIdentifier] = useState(""); 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,14 +16,13 @@ export default function Auth() {
 
   const savedUser = JSON.parse(localStorage.getItem("user"));
 
-  // LOGIN
   async function handleLogin() {
     try {
       const res = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          identifier, // username or email
+          identifier,
           password
         })
       });
@@ -43,7 +42,6 @@ export default function Auth() {
     }
   }
 
-  // REGISTER
   async function handleRegister() {
     if (password !== confirm) {
       alert("Passwords do not match");
@@ -76,7 +74,6 @@ export default function Auth() {
     }
   }
 
-  // LOGOUT
   function handleLogout() {
     localStorage.removeItem("user");
     navigate("/auth");
@@ -107,6 +104,7 @@ export default function Auth() {
                 name="identifier"
                 type="text"
                 placeholder="Username or Email"
+                value={identifier}
                 onChange={(e) => setIdentifier(e.target.value)}
               />
 
@@ -115,6 +113,7 @@ export default function Auth() {
                 name="password"
                 type="password"
                 placeholder="Password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
 
@@ -131,6 +130,7 @@ export default function Auth() {
                 name="username"
                 type="text"
                 placeholder="Username"
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
 
@@ -139,6 +139,7 @@ export default function Auth() {
                 name="email"
                 type="email"
                 placeholder="Email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
 
@@ -147,6 +148,7 @@ export default function Auth() {
                 name="password"
                 type="password"
                 placeholder="Password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
 
@@ -155,6 +157,7 @@ export default function Auth() {
                 name="confirm"
                 type="password"
                 placeholder="Confirm Password"
+                value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
               />
 
