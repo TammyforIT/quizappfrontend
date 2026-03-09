@@ -1,120 +1,52 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function PfpPage() {
   const navigate = useNavigate();
-  const API = import.meta.env.VITE_API_URL;
-
-  const savedUser = JSON.parse(localStorage.getItem("user"));
-
+  const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
 
-  // LOAD USER INFO
   useEffect(() => {
-    if (!savedUser) {
+    const saved = JSON.parse(localStorage.getItem("user"));
+    if (!saved) {
       navigate("/auth");
       return;
     }
-
-    async function loadUser() {
-      const res = await fetch(`${API}/api/user/me?id=${savedUser._id}`);
-      const data = await res.json();
-
-      setUsername(data.username);
-      setEmail(data.email);
-      setBio(data.bio || "");
-    }
-
-    loadUser();
+    setUser(saved);
+    setUsername(saved.username);
+    setEmail(saved.email);
+    setBio(saved.bio || "");
   }, []);
 
-  // UPDATE USER
-  async function handleUpdate() {
-    const res = await fetch(`${API}/api/user/update`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: savedUser._id,
-        username,
-        email,
-        bio
-      })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      alert(data.error || "Update failed");
-      return;
-    }
-
-    localStorage.setItem("user", JSON.stringify(data.user));
+  async function handleSave() {
+    const updated = { ...user, username, email, bio };
+    localStorage.setItem("user", JSON.stringify(updated));
     navigate("/dashboard");
   }
 
-  // DELETE USER
-  async function handleDelete() {
-    const res = await fetch(`${API}/api/user/delete?id=${savedUser._id}`, {
-      method: "DELETE"
-    });
-
-    if (res.ok) {
-      localStorage.removeItem("user");
-      alert("Account deleted");
-      navigate("/auth");
-    } else {
-      alert("Delete failed");
-    }
+  function handleDelete() {
+    localStorage.removeItem("user");
+    navigate("/auth");
   }
+
+  if (!user) return null;
 
   return (
     <div className="page-wrapper">
       <div className="glass-panel">
+        <h1 className="page-title">Edit Profile</h1>
 
-        <h1 className="page-title">
-          Edit <span>Profile</span>
-        </h1>
-
-        <p className="page-subtext">Update your account details below.</p>
-
-        <div className="profile-card">
-          <p><strong>Username:</strong> {username || "—"}</p>
-          <p><strong>Email:</strong> {email || "—"}</p>
-          <p><strong>Bio:</strong> {bio || "—"}</p>
-        </div>
-
-        <input
-          className="profile-input"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        />
-
-        <input
-          className="profile-input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-
-        <input
-          className="profile-input"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-          placeholder="Bio"
-        />
+        <input className="profile-input" value={username} onChange={e => setUsername(e.target.value)} />
+        <input className="profile-input" value={email} onChange={e => setEmail(e.target.value)} />
+        <input className="profile-input" value={bio} onChange={e => setBio(e.target.value)} />
 
         <div className="button-row">
-          <button onClick={handleUpdate}>Save Changes</button>
+          <button onClick={handleSave}>Save Changes</button>
           <button className="delete-btn" onClick={handleDelete}>Delete</button>
-        </div>
-
-        <div className="button-row">
           <button onClick={() => navigate("/dashboard")}>Back</button>
         </div>
-
       </div>
     </div>
   );

@@ -3,13 +3,12 @@ import { useState } from "react";
 
 export default function ProfileToggle() {
   const navigate = useNavigate();
-  const savedUser = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const [open, setOpen] = useState(false);
 
-  if (!savedUser) return null;
+  if (!user) return null;
 
-  
-  const initial = savedUser.username?.charAt(0)?.toUpperCase();
+  const initial = user.username?.charAt(0)?.toUpperCase();
 
   return (
     <div className="pfp-toggle-wrapper">
@@ -19,8 +18,8 @@ export default function ProfileToggle() {
 
       {open && (
         <div className="pfp-menu">
-          <p className="pfp-name">{savedUser.username}</p>
-          <p className="pfp-email">{savedUser.email}</p>
+          <p className="pfp-name">{user.username}</p>
+          <p className="pfp-email">{user.email}</p>
 
           <hr />
 

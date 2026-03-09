@@ -6,26 +6,24 @@ export default function Dashboard() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    if (!savedUser) {
+    const saved = JSON.parse(localStorage.getItem("user"));
+    if (!saved) {
       navigate("/auth");
       return;
     }
-    setUser(savedUser);
+    setUser(saved);
   }, []);
 
   if (!user) return null;
 
   return (
-    <div className="dashboard-bg">
-      <div className="dash-wrapper">
-        <div className="dash-card">
-          <h1 className="dash-title">Welcome back, {user.username}</h1>
+    <div className="page-wrapper">
+      <div className="glass-panel">
+        <h1 className="page-title">Welcome back, <span>{user.username}</span></h1>
 
-          <div className="dash-info">
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Bio:</strong> {user.bio || "No bio yet"}</p>
-          </div>
+        <div className="profile-card">
+          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Bio:</strong> {user.bio || "No bio yet"}</p>
         </div>
       </div>
     </div>
