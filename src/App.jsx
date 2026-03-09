@@ -4,7 +4,8 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import PfpPage from "./pages/Pfppage";
 import "./App.css";
-import pfptoggle from "./components/pfptoggle";
+import ProfileToggle from "./components/ProfileToggle";
+
 
 
 function App() {
