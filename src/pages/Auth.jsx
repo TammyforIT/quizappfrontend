@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
 
+  const [identifier, setIdentifier] = useState(""); // username OR email
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,25 +17,28 @@ export default function Auth() {
 
   // LOGIN
   async function handleLogin() {
-    const res = await fetch(`${API}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
-    });
+    try {
+      const res = await fetch(`${API}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          identifier, // ⭐ user can type username OR email
+          password
+        })
+      });
 
-    const data = await res.json();
-    console.log("LOGIN RESPONSE:", data);
+      const data = await res.json();
+      console.log("LOGIN RESPONSE:", data);
 
-    if (res.ok) {
-      localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/dashboard");
-    } else {
-      alert(data.error || "Invalid login");
+      if (res.ok) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard");
+      } else {
+        alert(data.message || "Invalid login");
+      }
+    } catch (err) {
+      console.error("LOGIN ERROR:", err);
+      alert("Login failed");
     }
   }
 
@@ -45,26 +49,29 @@ export default function Auth() {
       return;
     }
 
-    const res = await fetch(`${API}/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        password
-      })
-    });
+    try {
+      const res = await fetch(`${API}/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        })
+      });
 
-    const data = await res.json();
-    console.log("REGISTER RESPONSE:", data);
+      const data = await res.json();
+      console.log("REGISTER RESPONSE:", data);
 
-    if (res.ok) {
-      localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/dashboard");
-    } else {
-      alert(data.error || "Registration failed");
+      if (res.ok) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard");
+      } else {
+        alert(data.message || "Registration failed");
+      }
+    } catch (err) {
+      console.error("REGISTER ERROR:", err);
+      alert("Registration failed");
     }
   }
 
@@ -95,12 +102,16 @@ export default function Auth() {
           {showLogin ? (
             <div>
               <input
-                type="email"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
+                id="identifier"
+                name="identifier"
+                type="text"
+                placeholder="Username or Email"
+                onChange={(e) => setIdentifier(e.target.value)}
               />
 
               <input
+                id="password"
+                name="password"
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -115,24 +126,32 @@ export default function Auth() {
           ) : (
             <div>
               <input
+                id="username"
+                name="username"
                 type="text"
                 placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
               />
 
               <input
+                id="email"
+                name="email"
                 type="email"
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
 
               <input
+                id="password"
+                name="password"
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
 
               <input
+                id="confirm"
+                name="confirm"
                 type="password"
                 placeholder="Confirm Password"
                 onChange={(e) => setConfirm(e.target.value)}
