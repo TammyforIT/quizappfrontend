@@ -19,7 +19,9 @@ export default function Dashboard() {
   return (
     <div className="page-wrapper">
       <div className="glass-panel">
-        <h1 className="page-title">Welcome back, <span>{user.username}</span></h1>
+        <h1 className="page-title">
+          Welcome back, <span>{user.username}</span>
+        </h1>
 
         <div className="profile-card">
           <p><strong>Email:</strong> {user.email}</p>

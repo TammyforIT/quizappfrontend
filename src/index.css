@@ -6,14 +6,14 @@
   font-family: "Inter", sans-serif;
 }
 
-/* DEFAULT BODY FOR THE WHOLE APP */
+/* DEFAULT BODY FOR ALL PAGES */
 body {
-  background: #f3f6fc; /* dashboard + pfp background */
+  background: #f3f6fc;
   color: #1e293b;
   min-height: 100vh;
 }
 
-/* AUTH PAGE ONLY — GRADIENT */
+/* AUTH PAGE ONLY */
 .auth-container {
   background: linear-gradient(135deg, #6a00f4, #4f46e5, #3b82f6);
   background-size: 200% 200%;
