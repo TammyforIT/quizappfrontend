@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./ProfileToggle.css";
 
 export default function ProfileToggle() {
   const navigate = useNavigate();

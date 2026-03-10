@@ -1,0 +1,50 @@
+.pfp-page-wrapper {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.pfp-page-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 25px;
+}
+
+.pfp-field {
+  margin-bottom: 20px;
+}
+
+.pfp-label {
+  font-weight: 600;
+  color: #1e3a8a;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pfp-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.pfp-save-btn {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.pfp-save-btn:hover {
+  background: #274bb8;
+}

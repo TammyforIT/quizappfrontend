@@ -1,0 +1,66 @@
+/* Wrapper positions the avatar in the top-right */
+.pfp-toggle-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+/* Circle avatar with initial */
+.pfp-avatar {
+  width: 42px;
+  height: 42px;
+  background: #1e3a8a; /* deep blue */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.pfp-avatar:hover {
+  background: #274bb8;
+}
+
+/* Dropdown menu */
+.pfp-menu {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 190px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: fadeIn 0.15s ease-out;
+}
+
+.pfp-menu p {
+  margin: 8px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.pfp-menu p:hover {
+  color: #1e3a8a;
+}
+
+.pfp-name {
+  font-weight: 700;
+}
+
+.pfp-email {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
