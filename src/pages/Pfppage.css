@@ -1,50 +1,109 @@
-.pfp-page-wrapper {
-  max-width: 600px;
-  margin: 80px auto;
-  padding: 30px;
+/* PAGE WRAPPER */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  min-height: 100vh;
+  background: #f1f1f5; /* soft neutral grey */
+}
+
+/* MAIN CARD */
+.glass-panel {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  width: 600px;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
 }
 
-.pfp-page-title {
-  font-size: 26px;
+/* TITLE */
+.page-title {
+  font-size: 28px;
   font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 25px;
-}
-
-.pfp-field {
+  color: #b83280; /* soft magenta */
   margin-bottom: 20px;
 }
 
-.pfp-label {
+/* SUCCESS MESSAGE */
+.success-msg {
+  color: #16a34a;
   font-weight: 600;
-  color: #1e3a8a;
-  display: block;
-  margin-bottom: 6px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.pfp-input {
+/* INPUTS */
+.profile-input {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fafafa;
   font-size: 15px;
+  color: #1e293b;
 }
 
-.pfp-save-btn {
-  margin-top: 20px;
-  padding: 12px 18px;
-  background: #1e3a8a;
-  color: white;
+.profile-input:focus {
+  border-color: #b83280; /* soft magenta */
+  outline: none;
+}
+
+/* BUTTON ROW */
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* MAIN BUTTON (magenta) */
+.btn-main {
+  padding: 12px 20px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  background: #b83280; /* soft magenta */
+  color: white;
   font-weight: 600;
-  transition: background 0.2s ease;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
 }
 
-.pfp-save-btn:hover {
-  background: #274bb8;
+.btn-main:hover {
+  background: #a0266c; /* slightly deeper magenta */
+  transform: scale(1.05);
+}
+
+.btn-main:active {
+  transform: scale(0.95);
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #dc2626;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* BACK BUTTON (neutral grey) */
+.back-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #6b7280;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #4b5563;
 }

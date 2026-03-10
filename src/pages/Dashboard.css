@@ -1,25 +1,48 @@
-.dashboard-wrapper {
-  max-width: 700px;
-  margin: 80px auto;
-  padding: 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+/* PAGE WRAPPER */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  min-height: 100vh;
+  background: #f3f6fc; /* soft blue-gray */
 }
 
-.dashboard-title {
-  font-size: 26px;
+/* RECTANGULAR DASHBOARD PANEL */
+.glass-panel {
+  background: white;
+  width: 650px;
+  padding: 40px;
+  border-radius: 6px; /* ← small radius = rectangular */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  border: 1px solid #dbe2ee; /* subtle blue-grey border */
+}
+
+/* TITLE */
+.page-title {
+  font-size: 28px;
   font-weight: 700;
   color: #1e3a8a;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.dashboard-info {
-  font-size: 17px;
+.page-title span {
+  color: #0f172a;
+}
+
+/* PROFILE CARD INSIDE */
+.profile-card {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 6px; /* match the rectangular theme */
+  border: 1px solid #e2e8f0;
+}
+
+.profile-card p {
   margin: 10px 0;
+  font-size: 16px;
+  color: #1e293b;
 }
 
-.dashboard-info span {
-  font-weight: 600;
+.profile-card strong {
   color: #1e3a8a;
 }
