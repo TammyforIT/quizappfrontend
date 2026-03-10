@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
-import quiz from "./pages/quiz";
+import Quiz from "./pages/Quiz";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       <Routes>
         <Route path="/auth" element={<Auth />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/quiz" element={<quiz />} />
+        <Route path="/quiz" element={<Quiz />} /> 
         <Route path="*" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
