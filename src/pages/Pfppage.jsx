@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export default function PfpPage() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
@@ -14,13 +15,14 @@ export default function PfpPage() {
       navigate("/auth");
       return;
     }
+
     setUser(saved);
     setUsername(saved.username);
     setEmail(saved.email);
     setBio(saved.bio || "");
   }, []);
 
-  async function handleSave() {
+  function handleSave() {
     const updated = { ...user, username, email, bio };
     localStorage.setItem("user", JSON.stringify(updated));
     navigate("/dashboard");
@@ -38,14 +40,31 @@ export default function PfpPage() {
       <div className="glass-panel">
         <h1 className="page-title">Edit Profile</h1>
 
-        <input className="profile-input" value={username} onChange={e => setUsername(e.target.value)} />
-        <input className="profile-input" value={email} onChange={e => setEmail(e.target.value)} />
-        <input className="profile-input" value={bio} onChange={e => setBio(e.target.value)} />
+        <input
+          className="profile-input"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+
+        <input
+          className="profile-input"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+
+        <input
+          className="profile-input"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          placeholder="Bio"
+        />
 
         <div className="button-row">
           <button onClick={handleSave}>Save Changes</button>
           <button className="delete-btn" onClick={handleDelete}>Delete</button>
-          <button onClick={() => navigate("/dashboard")}>Back</button>
+          <button className="back-btn" onClick={() => navigate("/dashboard")}>Back</button>
         </div>
       </div>
     </div>
