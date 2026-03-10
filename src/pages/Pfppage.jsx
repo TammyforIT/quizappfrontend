@@ -9,6 +9,8 @@ export default function PfpPage() {
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
 
+  const [savedMessage, setSavedMessage] = useState("");
+
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("user"));
     if (!saved) {
@@ -25,11 +27,17 @@ export default function PfpPage() {
   function handleSave() {
     const updated = { ...user, username, email, bio };
     localStorage.setItem("user", JSON.stringify(updated));
-    navigate("/dashboard");
+
+    setSavedMessage("Saved!");
+
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 800);
   }
 
   function handleDelete() {
     localStorage.removeItem("user");
+    alert("Account deleted.");
     navigate("/auth");
   }
 
@@ -39,6 +47,10 @@ export default function PfpPage() {
     <div className="page-wrapper">
       <div className="glass-panel">
         <h1 className="page-title">Edit Profile</h1>
+
+        {savedMessage && (
+          <p className="success-msg">{savedMessage}</p>
+        )}
 
         <input
           className="profile-input"
@@ -62,7 +74,7 @@ export default function PfpPage() {
         />
 
         <div className="button-row">
-          <button onClick={handleSave}>Save Changes</button>
+          <button className="btn-main" onClick={handleSave}>Save Changes</button>
           <button className="delete-btn" onClick={handleDelete}>Delete</button>
           <button className="back-btn" onClick={() => navigate("/dashboard")}>Back</button>
         </div>

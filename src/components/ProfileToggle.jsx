@@ -24,9 +24,11 @@ export default function ProfileToggle() {
           <hr />
 
           <p onClick={() => navigate("/pfp")}>Profile</p>
+
           <p
             onClick={() => {
               localStorage.removeItem("user");
+              alert("Successfully logged out!");
               navigate("/auth");
             }}
           >

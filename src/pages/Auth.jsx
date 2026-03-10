@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css"; 
+import "../index.css";
 
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
 
-  const [identifier, setIdentifier] = useState(""); 
+  const [identifier, setIdentifier] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+
+  const [successMessage, setSuccessMessage] = useState("");
 
   const navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL;
@@ -22,10 +24,7 @@ export default function Auth() {
       const res = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          identifier,
-          password
-        })
+        body: JSON.stringify({ identifier, password })
       });
 
       const data = await res.json();
@@ -33,7 +32,8 @@ export default function Auth() {
 
       if (res.ok) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/dashboard");
+        setSuccessMessage("Successfully logged in!");
+        setTimeout(() => navigate("/dashboard"), 800);
       } else {
         alert(data.message || "Invalid login");
       }
@@ -54,11 +54,7 @@ export default function Auth() {
       const res = await fetch(`${API}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username,
-          email,
-          password
-        })
+        body: JSON.stringify({ username, email, password })
       });
 
       const data = await res.json();
@@ -66,7 +62,8 @@ export default function Auth() {
 
       if (res.ok) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/dashboard");
+        setSuccessMessage("Successfully registered!");
+        setTimeout(() => navigate("/dashboard"), 800);
       } else {
         alert(data.message || "Registration failed");
       }
@@ -87,17 +84,21 @@ export default function Auth() {
         <div className="auth-box">
           <h2>Account Settings</h2>
 
-          <button onClick={() => navigate("/pfp")}>
+          <button className="btn-main" onClick={() => navigate("/pfp")}>
             Go to Profile Page
           </button>
 
-          <button onClick={handleLogout}>
+          <button className="btn-main" onClick={handleLogout}>
             Logout
           </button>
         </div>
       ) : (
         <div className="auth-box">
           <h2>{showLogin ? "Login" : "Register"}</h2>
+
+          {successMessage && (
+            <p className="success-msg">{successMessage}</p>
+          )}
 
           {showLogin ? (
             <>
@@ -115,9 +116,14 @@ export default function Auth() {
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <button onClick={handleLogin}>Login</button>
+              <button className="btn-main" onClick={handleLogin}>
+                Login
+              </button>
 
-              <p className="switch" onClick={() => setShowLogin(false)}>
+              <p className="switch" onClick={() => {
+                setShowLogin(false);
+                setSuccessMessage("");
+              }}>
                 Don't have an account? Register
               </p>
             </>
@@ -151,9 +157,14 @@ export default function Auth() {
                 onChange={(e) => setConfirm(e.target.value)}
               />
 
-              <button onClick={handleRegister}>Register</button>
+              <button className="btn-main" onClick={handleRegister}>
+                Register
+              </button>
 
-              <p className="switch" onClick={() => setShowLogin(true)}>
+              <p className="switch" onClick={() => {
+                setShowLogin(true);
+                setSuccessMessage("");
+              }}>
                 Already have an account? Login
               </p>
             </>
