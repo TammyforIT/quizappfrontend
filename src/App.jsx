@@ -9,7 +9,7 @@ export default function App() {
       <Routes>
         <Route path="/auth" element={<Auth />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/quiz" element={<Quiz />} /> 
+        <Route path="/quiz" element={<Quiz />} />
         <Route path="*" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
