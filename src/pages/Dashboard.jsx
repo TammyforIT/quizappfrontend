@@ -1,4 +1,4 @@
-import "./Dashboard.css";             
+import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -28,6 +28,14 @@ export default function Dashboard() {
           <p><strong>Email:</strong> {user.email}</p>
           <p><strong>Bio:</strong> {user.bio || "No bio yet"}</p>
         </div>
+
+        <button
+          className="btn-main"
+          style={{ marginTop: "20px" }}
+          onClick={() => navigate("/quiz")}
+        >
+         Quiz 1: How Do You Know She Loves You?
+        </button>
       </div>
     </div>
   );
