@@ -8,7 +8,7 @@
 
 /* DEFAULT BODY FOR THE WHOLE APP */
 body {
-  background: #f3f6fc; /* your dashboard background */
+  background: #f3f6fc; /* dashboard + pfp background */
   color: #1e293b;
   min-height: 100vh;
 }

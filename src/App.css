@@ -4,34 +4,6 @@
   font-weight: 600;
   margin-bottom: 15px;
   text-align: center;
-}
-
-
-.btn-main {
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: none;
-  background: #1e3a8a;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.15s ease, background 0.2s ease;
-}
-
-.btn-main:hover {
-  background: #1e40af;
-  transform: scale(1.05);
-}
-
-.btn-main:active {
-  transform: scale(0.95);
-}
-/* SUCCESS MESSAGE */
-.success-msg {
-  color: #16a34a;
-  font-weight: 600;
-  margin-bottom: 15px;
-  text-align: center;
   animation: fadeIn 0.3s ease;
 }
 

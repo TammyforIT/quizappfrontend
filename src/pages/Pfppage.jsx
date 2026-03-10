@@ -48,9 +48,7 @@ export default function PfpPage() {
       <div className="glass-panel">
         <h1 className="page-title">Edit Profile</h1>
 
-        {savedMessage && (
-          <p className="success-msg">{savedMessage}</p>
-        )}
+        {savedMessage && <p className="success-msg">{savedMessage}</p>}
 
         <input
           className="profile-input"
