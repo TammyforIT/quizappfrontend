@@ -20,3 +20,4 @@ The UI is simple: glass panels, gradients, and basic CSS. Nothing fancy.
 Why This Is an MVP
 It has the essentials: login, protected routes, a dashboard, a working quiz, and navigation. No extra features or complicated backend logic. Just enough to show the idea clearly.
 https://github.com/TammyforIT/quizappbackend
+Naming conventions are super important
