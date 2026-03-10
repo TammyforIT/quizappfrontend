@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { quizQuestions } from "./quizData";
 import QuizResults from "./QuizResults";
+import "./Quiz.css";
 
 export default function Quiz() {
   const [answers, setAnswers] = useState([]);
   const [done, setDone] = useState(false);
+  const navigate = useNavigate();
 
   function chooseOption(qIndex, optionIndex) {
     const updated = [...answers];
@@ -40,6 +43,10 @@ export default function Quiz() {
             </div>
           </div>
         ))}
+
+        <button className="back-btn" onClick={() => navigate("/dashboard")}>
+          Back to Dashboard
+        </button>
       </div>
     </div>
   );

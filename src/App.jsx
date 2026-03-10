@@ -1,34 +1,17 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
-import PfpPage from "./pages/Pfppage";
-import "./App.css";
-import ProfileToggle from "./components/ProfileToggle";
+import quiz from "./pages/quiz";
 
-function App() {
-  const user = JSON.parse(localStorage.getItem("user"));
-
+export default function App() {
   return (
     <BrowserRouter>
-      <ProfileToggle />
-
       <Routes>
-        {/* Root should point to Auth or Dashboard */}
-        <Route path="/" element={user ? <Dashboard /> : <Auth />} />
-
-        {/* Auth */}
         <Route path="/auth" element={<Auth />} />
-
-        {/* Protected pages */}
-        <Route path="/dashboard/*" element={user ? <Dashboard /> : <Navigate to="/auth" />} />
-        <Route path="/pfp/*" element={user ? <PfpPage /> : <Navigate to="/auth" />} />
-
-        {/* Catch-all */}
-        <Route path="*" element={<NotFound />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="*" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;

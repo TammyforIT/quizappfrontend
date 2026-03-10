@@ -34,7 +34,15 @@ export default function Dashboard() {
           style={{ marginTop: "20px" }}
           onClick={() => navigate("/quiz")}
         >
-         Quiz 1: How Do You Know She Loves You?
+          Quiz 1: How Do You Know She Loves You?
+        </button>
+
+        <button
+          className="btn-main"
+          style={{ marginTop: "10px" }}
+          onClick={() => navigate("/dashboard")}
+        >
+          Go Home
         </button>
       </div>
     </div>
