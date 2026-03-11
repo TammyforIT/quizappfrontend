@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { quizQuestions } from "./quizData";
 import QuizResults from "./QuizResults";
-import "./Quiz.css";
+import "./Quizt.css";
 
 export default function Quiz() {
   const [answers, setAnswers] = useState([]);
