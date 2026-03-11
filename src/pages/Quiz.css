@@ -75,3 +75,23 @@
 .back-btn:hover {
   background: #000;
 }
+.quiz-btn.selected {
+  background: #ff3b3b;
+  transform: scale(1.03);
+}
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #1e3a8a;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: #1e40af;
+}

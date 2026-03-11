@@ -5,7 +5,7 @@ import QuizResults from "./QuizResults";
 import "./Quiz.css";
 
 export default function Quiz() {
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState(Array(quizQuestions.length).fill(null));
   const [done, setDone] = useState(false);
   const navigate = useNavigate();
 
@@ -13,10 +13,15 @@ export default function Quiz() {
     const updated = [...answers];
     updated[qIndex] = optionIndex;
     setAnswers(updated);
+  }
 
-    if (updated.length === quizQuestions.length && !updated.includes(undefined)) {
-      setDone(true);
+  function submitQuiz() {
+    const allAnswered = answers.every(a => a !== null);
+    if (!allAnswered) {
+      alert("Please answer all questions before submitting.");
+      return;
     }
+    setDone(true);
   }
 
   if (done) return <QuizResults answers={answers} />;
@@ -34,7 +39,7 @@ export default function Quiz() {
               {q.options.map((opt, j) => (
                 <button
                   key={j}
-                  className="quiz-btn"
+                  className={`quiz-btn ${answers[i] === j ? "selected" : ""}`}
                   onClick={() => chooseOption(i, j)}
                 >
                   {opt}
@@ -43,6 +48,10 @@ export default function Quiz() {
             </div>
           </div>
         ))}
+
+        <button className="submit-btn" onClick={submitQuiz}>
+          Submit Quiz
+        </button>
 
         <button className="back-btn" onClick={() => navigate("/dashboard")}>
           Back to Dashboard
