@@ -22,7 +22,7 @@ export default function Quiz() {
   if (done) return <QuizResults answers={answers} />;
 
   return (
-    <div className="page-wrapper">
+    <div className="quiz-wrapper">
       <div className="glass-panel">
         <h1 className="page-title">How Do You Know She Loves You?</h1>
 
