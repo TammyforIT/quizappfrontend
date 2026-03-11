@@ -1,4 +1,4 @@
-import "./Pfppage.css";               
+import "./Pfppage.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -14,19 +14,29 @@ export default function PfpPage() {
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("user"));
-    if (!saved) {
+
+    // ⭐ FIX: If no user OR missing _id → redirect
+    if (!saved || !saved._id) {
       navigate("/auth");
       return;
     }
 
+    // ⭐ FIX: Ensure all fields exist
     setUser(saved);
-    setUsername(saved.username);
-    setEmail(saved.email);
+    setUsername(saved.username || "");
+    setEmail(saved.email || "");
     setBio(saved.bio || "");
-  }, []);
+  }, [navigate]);
 
   function handleSave() {
-    const updated = { ...user, username, email, bio };
+    const updated = {
+      ...user,
+      username,
+      email,
+      bio
+    };
+
+    // ⭐ FIX: Always save the updated user object
     localStorage.setItem("user", JSON.stringify(updated));
 
     setSavedMessage("Saved!");
@@ -37,6 +47,7 @@ export default function PfpPage() {
   }
 
   function handleDelete() {
+    // ⭐ FIX: Only remove local user (your backend delete is separate)
     localStorage.removeItem("user");
     alert("Account deleted.");
     navigate("/auth");
