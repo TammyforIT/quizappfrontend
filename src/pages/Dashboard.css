@@ -1,48 +1,45 @@
-/* PAGE WRAPPER */
 .page-wrapper {
+  min-height: 100vh;
+  background: #f0f6ff; /* soft blue-white */
   display: flex;
   justify-content: center;
-  padding-top: 80px;
-  min-height: 100vh;
-  background: #f3f6fc; /* soft blue-gray */
+  align-items: center;
+  padding: 40px;
+  position: relative;
 }
-
 
 .glass-panel {
-  background: white;
-  width: 650px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
   padding: 40px;
-  border-radius: 6px; /* ← small radius = rectangular */
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  border: 1px solid #dbe2ee; /* subtle blue-grey border */
-}
-
-/* TITLE */
-.page-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 25px;
+  border-radius: 16px;
+  width: 420px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .page-title span {
-  color: #0f172a;
+  color: #1e6bff;
 }
 
-/* PROFILE CARD INSIDE */
 .profile-card {
-  background: #f8fafc;
+  background: white;
   padding: 20px;
-  border-radius: 6px; /* match the rectangular theme */
-  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.profile-card p {
-  margin: 10px 0;
+.btn-main {
+  background: #1e6bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
   font-size: 16px;
-  color: #1e293b;
 }
 
-.profile-card strong {
-  color: #1e3a8a;
+.btn-main:hover {
+  background: #1552c8;
 }

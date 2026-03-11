@@ -1,30 +1,30 @@
-/* Wrapper positions the avatar in the top-right */
+
 .pfp-toggle-wrapper {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 999;
+  z-index: 999; 
 }
 
-/* Circle avatar with initial */
+
 .pfp-avatar {
-  width: 42px;
-  height: 42px;
-  background: #1e3a8a; /* deep blue */
+  width: 45px;
+  height: 45px;
+  background: #1e6bff; 
   color: white;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  font-weight: bold;
   cursor: pointer;
-  font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   user-select: none;
-  transition: background 0.2s ease;
+  transition: transform 0.15s ease;
 }
 
 .pfp-avatar:hover {
-  background: #274bb8;
+  transform: scale(1.05);
 }
 
 /* Dropdown menu */
@@ -33,34 +33,50 @@
   top: 55px;
   right: 0;
   background: white;
-  padding: 15px;
+  padding: 14px;
   border-radius: 10px;
-  width: 190px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  animation: fadeIn 0.15s ease-out;
-}
-
-.pfp-menu p {
-  margin: 8px 0;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.pfp-menu p:hover {
-  color: #1e3a8a;
+  width: 170px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  animation: fadeIn 0.18s ease-out;
 }
 
 .pfp-name {
-  font-weight: 700;
+  font-weight: bold;
+  margin-bottom: 2px;
 }
 
 .pfp-email {
   font-size: 13px;
   color: #555;
+  margin-bottom: 10px;
 }
 
-/* Fade animation */
+/* Menu items */
+.pfp-menu p {
+  margin: 8px 0;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.pfp-menu p:hover {
+  color: #1e6bff;
+}
+
+/* Divider */
+.pfp-menu hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 10px 0;
+}
+
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

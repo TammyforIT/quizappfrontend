@@ -1,4 +1,4 @@
-/* SUCCESS MESSAGE dashboard */
+/* SUCCESS MESSAGE (Dashboard + Auth) */
 .success-msg {
   color: #16a34a;
   font-weight: 600;
@@ -7,12 +7,12 @@
   animation: fadeIn 0.3s ease;
 }
 
-/* BUTTON ANIMATION */
+
 .btn-main {
   padding: 12px 20px;
   border-radius: 10px;
   border: none;
-  background: #1e3a8a;
+  background: #1e3a8a; /* deep blue */
   color: white;
   font-weight: 600;
   cursor: pointer;

@@ -1,6 +1,7 @@
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ProfileToggle from "../components/ProfileToggle";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -19,6 +20,9 @@ export default function Dashboard() {
 
   return (
     <div className="page-wrapper">
+      {/* PFP circle in top-right */}
+      <ProfileToggle />
+
       <div className="glass-panel">
         <h1 className="page-title">
           Welcome back, <span>{user.username}</span>
