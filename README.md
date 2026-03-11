@@ -16,8 +16,6 @@ Routes are:
 /quiz for the quiz
 
 The UI is simple: glass panels, gradients, and basic CSS. Nothing fancy.
-
-Why This Is an MVP
-It has the essentials: login, protected routes, a dashboard, a working quiz, and navigation. No extra features or complicated backend logic. Just enough to show the idea clearly.
+I wanted to show the crud and also using mongo db atlas for storing data
 https://github.com/TammyforIT/quizappbackend
 Naming conventions are super important
