@@ -1,6 +1,9 @@
 import { quizQuestions } from "./quizData";
+import { useNavigate } from "react-router-dom";
 
 export default function QuizResults({ answers }) {
+  const navigate = useNavigate();
+
   let score = 0;
 
   answers.forEach((ans, i) => {
@@ -22,6 +25,13 @@ export default function QuizResults({ answers }) {
       <div className="glass-panel">
         <h1 className="page-title">Your Result</h1>
         <p className="quiz-result">{result}</p>
+
+        <button 
+          className="back-btn" 
+          onClick={() => navigate("/dashboard")}
+        >
+          Back to Dashboard
+        </button>
       </div>
     </div>
   );
