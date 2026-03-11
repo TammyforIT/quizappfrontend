@@ -1,31 +1,56 @@
+
 .page-wrapper {
   min-height: 100vh;
-  background: #f0f6ff; /* soft blue-white */
+  padding: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
   position: relative;
+
+  
+  background: #f0f6ff;
+
+  background-image:
+    repeating-linear-gradient(
+      120deg,
+      rgba(180, 220, 190, 0.25) 0px,
+      rgba(180, 220, 190, 0.25) 3px,
+      transparent 3px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      rgba(160, 200, 255, 0.25) 0px,
+      rgba(160, 200, 255, 0.25) 2px,
+      transparent 2px,
+      transparent 80px
+    );
 }
 
+/* ============================
+   GLASS PANEL
+   ============================ */
 .glass-panel {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   padding: 40px;
   border-radius: 16px;
-
- 
   width: 90%;
   max-width: 560px;
-
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   text-align: center;
 }
 
+/* ============================
+   PAGE TITLE
+   ============================ */
 .page-title span {
   color: #1e6bff;
 }
 
+/* ============================
+   PROFILE CARD
+   ============================ */
 .profile-card {
   background: white;
   padding: 20px;
@@ -34,6 +59,9 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+/* ============================
+   BUTTONS
+   ============================ */
 .btn-main {
   background: #1e6bff;
   color: white;
@@ -42,6 +70,7 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  transition: 0.2s ease;
 }
 
 .btn-main:hover {
